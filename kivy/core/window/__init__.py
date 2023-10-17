@@ -876,6 +876,7 @@ class WindowBase(EventDispatcher):
         'on_close', 'on_minimize', 'on_maximize', 'on_restore',
         'on_hide', 'on_show', 'on_motion', 'on_touch_down',
         'on_touch_move', 'on_touch_up', 'on_mouse_down',
+        'on_finger_move', 'on_finger_up', 'on_finger_down',
         'on_mouse_move', 'on_mouse_up', 'on_keyboard', 'on_key_down',
         'on_key_up', 'on_textinput', 'on_dropfile', 'on_request_close',
         'on_cursor_enter', 'on_cursor_leave', 'on_joy_axis',
@@ -1679,6 +1680,18 @@ class WindowBase(EventDispatcher):
         .. note::
             This feature requires the SDL2 window provider.
         '''
+        pass
+
+    def on_finger_down(self, x, y, modifiers):
+        '''Event called when the mouse is used (pressed/released).'''
+        pass
+
+    def on_finger_move(self, x, y, modifiers):
+        '''Event called when the mouse is moved with buttons pressed.'''
+        pass
+
+    def on_finger_up(self, x, y, modifiers):
+        '''Event called when the mouse is moved with buttons pressed.'''
         pass
 
     def on_mouse_down(self, x, y, button, modifiers):

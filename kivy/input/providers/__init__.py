@@ -13,6 +13,7 @@ from kivy.setupconfig import USE_SDL2
 
 import kivy.input.providers.tuio
 import kivy.input.providers.mouse
+import kivy.input.providers.finger
 
 platform = core_platform
 
@@ -52,6 +53,7 @@ if platform == 'linux' or 'KIVY_DOC' in os.environ:
     except:
         err = 'Input: LinuxWacom is not supported by your version of linux'
         Logger.exception(err)
+    
 
 if (platform == 'android' and not USE_SDL2) or 'KIVY_DOC' in os.environ:
     try:

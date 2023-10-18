@@ -509,23 +509,15 @@ class WindowSDL(WindowBase):
                 break
 
             elif action in ('fingermotion'):
-                _, x, y = args
-                self._mouse_x = x
-                self._mouse_y = y
-                # don't dispatch motion if no button are pressed
-                if len(self._mouse_buttons_down) == 0:
-                    continue
-                self._mouse_meta = self.modifiers
-                self.dispatch('on_finger_move', x, y, self.modifiers)
+                idx, x, y = args
+                self.dispatch('on_finger_move', idx, x, y)
 
             elif action in ('fingerdown', 'fingerup'):
-                _, x, y = args
+                idx, x, y = args
                 eventname = 'on_finger_down'
-                if action == 'mousebuttonup':
+                if action == 'fingerup':
                     eventname = 'on_finger_up'
-                self._mouse_x = x
-                self._mouse_y = y
-                self.dispatch(eventname, x, y, self.modifiers)
+                self.dispatch(eventname, idx, x, y)
 
             elif action == 'mousemotion':
                 x, y = args
